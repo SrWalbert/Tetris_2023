@@ -46,30 +46,31 @@ def draw() -> None:
                 pygame.draw.rect(screen, (107, 52, 118), rect)
 
 
+# def rotation():
+
+
 # Colisión con otros pixeles o con los muros
-def collition():
+def collition() -> bool:
     for y, row in enumerate(board):
         for x, pix in enumerate(row):
             if y == row[19]:
-                frezze()
+                return False
             if x < pix[0] or x > pix[19]:
-                # Agregar algo que lo detenga
-                pass
+                return False
+            # Falta saber si hay otros bloques cerca
+            else:
+                return True
 
 
-# Qué es estar congelado
-def frezze():
+def fall():
     pass
 
 
-# def collition_frezze():
-#     for row in enumerate(board):
-#         if row == row[19]:
-#             frezze()
+# Qué es estar congelado
 
 
-def move():
-    for event in pygame.event.get():
+def move(allowed: bool):
+    if allowed == True:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.k_s:
                 # Go down
@@ -80,17 +81,13 @@ def move():
             if event.key == pygame.k_d:
                 # Go right
                 pass
+        fall()
 
-
-# def fall():
-#
-
-
-# def rotation():
 
 run = True
 while run:
     draw()
+    move(collition())
     # Salir del juego
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
