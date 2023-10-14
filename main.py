@@ -1,5 +1,3 @@
-import enum
-from errno import EMEDIUMTYPE
 import pygame
 
 pygame.init()
@@ -55,7 +53,8 @@ def collition():
             if y == row[19]:
                 frezze()
             if x < pix[0] or x > pix[19]:
-                move()
+                # Agregar algo que lo detenga
+                pass
 
 
 # Qué es estar congelado
@@ -72,14 +71,13 @@ def frezze():
 def move():
     for event in pygame.event.get():
         if event.type == pygame.KEYDOWN:
-            key_name = event.unicode
-            if key_name == "s":
+            if event.key == pygame.k_s:
                 # Go down
                 pass
-            if key_name == "a":
+            if event.key == pygame.k_a:
                 # Go left
                 pass
-            if key_name == "d":
+            if event.key == pygame.k_d:
                 # Go right
                 pass
 
