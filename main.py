@@ -2,8 +2,8 @@ import pygame
 
 pygame.init()
 
-SCREEN_WIDTH = 600
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH: int = 600
+SCREEN_HEIGHT: int = 600
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 
 board: list[int] = [
@@ -30,12 +30,12 @@ board: list[int] = [
 ]
 
 # Figuras
-cuadrade = [[1, 1], [1, 1]]
+cuadrade: list[list[int]] = [[1, 1], [1, 1]]
 
 
 # Dibujar la cuadricula
 def draw() -> None:
-    pixel_size = 30  # Tamaño de cada cuadrado en píxeles
+    pixel_size: int = 30  # Tamaño de cada cuadrado en píxeles
 
     for y, row in enumerate(board):
         for x, pix in enumerate(row):
