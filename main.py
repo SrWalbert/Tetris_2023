@@ -37,6 +37,10 @@ class Piece:
         self.position = position
         self.shape = shape
 
+    def __iter__(self):
+        for row in self.shape:
+            yield row
+
 
 cuadrade = Piece({"x": 5, "y": 5}, [[1, 1], [1, 1]])
 linie = Piece({"x": 5, "y": 5}, [[1, 1, 1, 1, 1]])
