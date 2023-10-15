@@ -95,7 +95,7 @@ def collition() -> bool:
                 return True
 
 
-def fall():
+def falling():
     pass
 
 
@@ -106,15 +106,12 @@ def move(allowed: bool):
     if allowed == True:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.k_s:
-                # Go down
-                pass
+                actual_piece.position["y"] + 1
             if event.key == pygame.k_a:
-                # Go left
-                pass
+                actual_piece.position["x"] - 1
             if event.key == pygame.k_d:
-                # Go right
-                pass
-        fall()
+                actual_piece.position["x"] + 1
+        falling()
 
 
 run = True
