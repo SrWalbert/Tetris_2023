@@ -1,4 +1,5 @@
 import pygame
+import random
 
 pygame.init()
 
@@ -29,8 +30,20 @@ board: list[int] = [
     [1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ]
 
-# Figuras
-cuadrade: list[list[int]] = [[1, 1], [1, 1]]
+
+# Piezas
+class Piece:
+    def __init__(self, position: dict, shape: list[list[int]]) -> None:
+        self.position = position
+        self.shape = shape
+
+
+cuadrade = Piece({"x": 5, "y": 5}, [[1, 1], [1, 1]])
+linie = Piece({"x": 5, "y": 5}, [[1, 1, 1, 1, 1]])
+linie_l = Piece({"x": 5, "y": 5}, [[1, 1, 1, 1, 1], [0, 0, 0, 0, 1]])
+
+
+actual_piece = random.choice([cuadrade, linie, linie_l])
 
 
 # Dibujar la cuadricula
@@ -44,6 +57,22 @@ def draw() -> None:
                 pygame.draw.rect(screen, (30, 30, 30), rect)
             else:
                 pygame.draw.rect(screen, (107, 52, 118), rect)
+
+    # Dubujar pieza
+
+    # Recordar cambiar cuadrade por piece
+    for y, row_shape in enumerate(actual_piece):
+        for x, pix_shape in enumerate(row_shape):
+            rect_shape = pygame.Rect(
+                (x + actual_piece.position["x"]) * pixel_size,
+                (y + actual_piece.position["y"]) * pixel_size,
+                pixel_size,
+                pixel_size,
+            )
+            if pix_shape == 0:
+                pygame.draw.rect(screen, (30, 30, 30), rect_shape)
+            else:
+                pygame.draw.rect(screen, (250, 0, 0), rect_shape)
 
 
 # def rotation():
@@ -87,9 +116,10 @@ def move(allowed: bool):
 run = True
 while run:
     draw()
-    move(collition())
+
     # Salir del juego
     for event in pygame.event.get():
+        move(collition())
         if event.type == pygame.QUIT:
             run = False
 
