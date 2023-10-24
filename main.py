@@ -1,3 +1,4 @@
+import time
 import pygame
 import random
 
@@ -29,6 +30,7 @@ board: list[int] = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ]
+pixel_size: int = 30  # Tamaño de cada cuadrado en píxeles
 
 
 # Piezas
@@ -47,7 +49,7 @@ linie = Piece({"x": 5, "y": 5}, [[1, 1, 1, 1, 1]])
 linie_l = Piece({"x": 5, "y": 5}, [[1, 1, 1, 1, 1], [0, 0, 0, 0, 1]])
 
 
-actual_piece = random.choice([cuadrade, linie, linie_l])
+actual_piece: Piece = random.choice([cuadrade, linie, linie_l])
 
 
 # Dibujar la cuadricula
@@ -95,8 +97,10 @@ def collition() -> bool:
                 return True
 
 
-def falling():
-    pass
+def falling(allowed: bool):
+    while allowed:
+        actual_piece.position["y"] = actual_piece.position["y"] + 1
+        time.sleep(1)
 
 
 # Qué es estar congelado
@@ -106,12 +110,12 @@ def move(allowed: bool):
     if allowed == True:
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.k_s:
-                actual_piece.position["y"] + 1
+                actual_piece.position["y"] = actual_piece.position["y"] + 1
             if event.key == pygame.k_a:
-                actual_piece.position["x"] - 1
+                actual_piece.position["x"] = actual_piece.position["x"] - 1
             if event.key == pygame.k_d:
-                actual_piece.position["x"] + 1
-        falling()
+                actual_piece.position["x"] = actual_piece.position["x"] + 1
+    falling(allowed)
 
 
 run = True
