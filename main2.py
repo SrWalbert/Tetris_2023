@@ -1,10 +1,8 @@
-import sys
-
 """Pygame es nuestro módulo principal, que nos dará el juego"""
 import pygame
 
 """Toda la lógica no la dará el modulo propio de logica"""
-import Tetris.logica as logic
+import logica as logic
 
 pygame.init()
 
@@ -39,8 +37,8 @@ pixel_size: int = 30  # Tamaño de cada cuadrado en píxeles
 
 running_program: bool = True
 while running_program:
-    logic.exiting()
+    logic.exitting()
 
     pygame.display.update()
 
-pygame.QUIT
+pygame.quit()
