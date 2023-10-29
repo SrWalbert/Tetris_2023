@@ -1,35 +1,20 @@
+"""Pygame es necesario para que no lance errores"""
 import pygame
+
+"""abc no ayuda con las abstracciones"""
+from abc import ABC, abstractclassmethod
+
+"""Random nos ayudará más tarde con la función choise"""
 import random
+
+"""Declarando funciones usadas en el archivo main2.py"""
+
 
 def exititing() -> bool:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             return False
     return False
-
-
-class Piece:
-    def __init__(self, position: dict, shape: list[list[int]]) -> None:
-        self.position = position
-        self.shape = shape
-
-    def __iter__(self):
-        for row in self.shape:
-            yield row
-
-    def draw(self, screen: tuple[int], pixel_size: int) -> pygame.Rect:
-        for y, row_shape in enumerate(self.shape):
-            for x, pix_shape in enumerate(row_shape):
-                rect_shape = pygame.Rect(
-                    (x + self.position["x"]) * pixel_size,
-                    (y + self.position["y"]) * pixel_size,
-                    pixel_size,
-                    pixel_size,
-                )
-                if pix_shape == 0:
-                    pygame.draw.rect(screen, (30, 30, 30), rect_shape)
-                else:
-                    pygame.draw.rect(screen, (250, 0, 0), rect_shape)
 
 
 def draw(list_: list[int], screen: tuple[int], pixel_size: int) -> pygame.Rect:
@@ -42,9 +27,86 @@ def draw(list_: list[int], screen: tuple[int], pixel_size: int) -> pygame.Rect:
                 pygame.draw.rect(screen, (107, 52, 118), rect)
 
 
-#
+def collition() -> bool:
+    # return allowed true or false
+    pass
 
-#
+
+"""Declarando clases e instancias"""
+
+
+# Clase madre piezas
+class Piece(ABC):
+    # def __init__(self, position: dict, shape: list[list[int]]) -> None:
+    #     self.position: dict = position
+    #     self.shape: list[list[int]] = shape
+    @abstractclassmethod
+    def __init__(self) -> None:
+        self.position: list[int] = [1, 10]
+
+    def __iter__(self):
+        for row in self.shape:
+            yield row
+
+    @abstractclassmethod
+    def rotate(self, allowed: bool):
+        pass
+
+    def move(self, allowed: bool):
+        if allowed:
+            pass
+
+
+# subclases de forma
+class Cuadrade(Piece):
+    def __init__(self) -> None:
+        super().__init__()
+        self.shape: list[list[int]] = [[1, 1], [1, 1]]
+
+    def rotate(self, allowed: bool):
+        pass
+
+
+class Linie(Piece):
+    def __init__(self) -> None:
+        super().__init__()
+        self.shape: list[list[int]] = [[1, 1, 1, 1, 1]]
+
+    def rotate(self, allowed: bool):
+        # To rotate
+        pass
+
+
+class LinieEle(Piece):
+    def __init__(self) -> None:
+        super().__init__()
+        self.shape: list[list[int]] = [[1, 1, 1, 1], [0, 0, 0, 0, 1]]
+
+    def rotate(self, allowed: bool):
+        # To rotate
+        pass
+
+
+class CuadradePlusOne(Piece):
+    def __init__(self) -> None:
+        super().__init__()
+        self.shape: list[list[int]] = [[0, 1], [1, 1], [1, 1]]
+
+    def rotate(self, allowed: bool):
+        # To rotate
+        pass
+
+
+class Crux(Piece):
+    def __init__(self) -> None:
+        super().__init__()
+        self.shape: list[list[int]] = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]
+
+
+class CruxT(Piece):
+    def __init__(self) -> None:
+        super().__init__()
+        self.shape: list[list[int]] = [[1, 1, 1], [0, 1, 0]]
 
 
 cuadrade = Piece({"x": 5, "y": 5}, [[1, 1], [1, 1]])
