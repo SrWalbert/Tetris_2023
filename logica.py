@@ -117,6 +117,16 @@ class CruxT(Piece):
         pass
 
 
+class Z(Piece):
+    def __init__(self) -> None:
+        super().__init__()
+        self.shape: list[list[int]] = [[1, 1, 0], [0, 1, 1]]
+
+    def rotate(self):
+        # to rotate
+        pass
+
+
 cuadrade = Piece({"x": 5, "y": 5}, [[1, 1], [1, 1]])
 linie = Piece({"x": 5, "y": 5}, [[1, 1, 1, 1, 1]])
 linie_l = Piece({"x": 5, "y": 5}, [[1, 1, 1, 1, 1], [0, 0, 0, 0, 1]])
