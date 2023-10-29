@@ -1,13 +1,18 @@
 import pygame
 
 
-def exitting() -> bool:
+def exititing() -> bool:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             return False
     return False
 
-def recorring(other_data_x, list_):
-    for y, other_data_y in enumerate(list_):
-        for x, other_data_x in enumerate(other_data_y):
-        pass
+
+def draw(list_: list[int], screen: tuple, pixel_size: int) -> pygame.Rect:
+    for y, row in enumerate(list_):
+        for x, pix in enumerate(row):
+            rect = pygame.Rect(x * pixel_size, y * pixel_size, pixel_size, pixel_size)
+            if pix == 0:
+                pygame.draw.rect(screen, (30, 30, 30), rect)
+            else:
+                pygame.draw.rect(screen, (107, 52, 118), rect)
