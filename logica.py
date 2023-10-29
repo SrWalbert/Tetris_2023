@@ -63,7 +63,7 @@ class Cuadrade(Piece):
         super().__init__()
         self.shape: list[list[int]] = [[1, 1], [1, 1]]
 
-    def rotate(self, allowed: bool):
+    def rotate(self):
         pass
 
 
@@ -102,11 +102,19 @@ class Crux(Piece):
         super().__init__()
         self.shape: list[list[int]] = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]
 
+    def rotate(self):
+        # no rotate
+        pass
+
 
 class CruxT(Piece):
     def __init__(self) -> None:
         super().__init__()
         self.shape: list[list[int]] = [[1, 1, 1], [0, 1, 0]]
+
+    def rotate(self):
+        # to rotate
+        pass
 
 
 cuadrade = Piece({"x": 5, "y": 5}, [[1, 1], [1, 1]])
