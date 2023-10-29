@@ -53,7 +53,7 @@ actual_piece: Piece = random.choice([cuadrade, linie, linie_l])
 
 
 # Dibujar la cuadricula
-def draw() -> None:
+def draw() -> pygame.Rect():
     pixel_size: int = 30  # Tamaño de cada cuadrado en píxeles
 
     for y, row in enumerate(board):

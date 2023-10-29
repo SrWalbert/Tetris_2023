@@ -32,13 +32,13 @@ board: list[int] = [
     [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
     [1, 1, 1, 1, 1, 1, 1, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
 ]
-pixel_size: int = 30  # Tamaño de cada cuadrado en píxeles
+# pixel_size: int = 30
 
 
 running_program: bool = True
 while running_program:
-    logic.exitting()
-
+    logic.exititing()
+    logic.draw(board, screen, pixel_size=30)
     pygame.display.update()
 
 pygame.quit()
