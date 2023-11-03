@@ -7,6 +7,8 @@ from abc import ABC, abstractclassmethod
 """Random nos ayudará más tarde con la función choise"""
 import random
 
+# """Declarando tipos de datos"""
+# type board = list[list[int]]
 """Declarando funciones usadas en el archivo main2.py"""
 
 
