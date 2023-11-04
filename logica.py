@@ -7,8 +7,8 @@ from abc import ABC, abstractclassmethod
 """Random nos ayudará más tarde con la función choise"""
 import random
 
-# """Declarando tipos de datos"""
-# type board = list[list[int]]
+"""Declarando tipos de datos"""
+type board = list[list[int]]
 """Declarando funciones usadas en el archivo main2.py"""
 
 
@@ -19,7 +19,7 @@ def exititing() -> bool:
     return False
 
 
-def draw(list_: list[int], screen: tuple[int], pixel_size: int) -> pygame.Rect:
+def draw(list_: board, screen: tuple[int], pixel_size: int) -> pygame.Rect:
     for y, row in enumerate(list_):
         for x, pix in enumerate(row):
             rect = pygame.Rect(x * pixel_size, y * pixel_size, pixel_size, pixel_size)
@@ -39,9 +39,9 @@ def collition() -> bool:
 
 # Clase madre piezas
 class Piece(ABC):
-    # def __init__(self, position: dict, shape: list[list[int]]) -> None:
+    # def __init__(self, position: dict, shape: board) -> None:
     #     self.position: dict = position
-    #     self.shape: list[list[int]] = shape
+    #     self.shape: board = shape
     @abstractclassmethod
     def __init__(self) -> None:
         self.position: list[int] = [1, 10]
@@ -54,6 +54,7 @@ class Piece(ABC):
     def rotate(self, allowed: bool):
         pass
 
+    @abstractclassmethod
     def move(self, allowed: bool):
         if allowed:
             pass
@@ -63,70 +64,98 @@ class Piece(ABC):
 class Cuadrade(Piece):
     def __init__(self) -> None:
         super().__init__()
-        self.shape: list[list[int]] = [[1, 1], [1, 1]]
+        self.shape: board = [[1, 1], [1, 1]]
 
     def rotate(self):
         pass
+
+    def move(self, allowed: bool):
+        if allowed:
+            pass
 
 
 class Linie(Piece):
     def __init__(self) -> None:
         super().__init__()
-        self.shape: list[list[int]] = [[1, 1, 1, 1, 1]]
+        self.shape: board = [[1, 1, 1, 1, 1]]
 
     def rotate(self, allowed: bool):
         # To rotate
         pass
+
+    def move(self, allowed: bool):
+        if allowed:
+            pass
 
 
 class LinieEle(Piece):
     def __init__(self) -> None:
         super().__init__()
-        self.shape: list[list[int]] = [[1, 1, 1, 1], [0, 0, 0, 0, 1]]
+        self.shape: board = [[1, 1, 1, 1], [0, 0, 0, 0, 1]]
 
     def rotate(self, allowed: bool):
         # To rotate
         pass
+
+    def move(self, allowed: bool):
+        if allowed:
+            pass
 
 
 class CuadradePlusOne(Piece):
     def __init__(self) -> None:
         super().__init__()
-        self.shape: list[list[int]] = [[0, 1], [1, 1], [1, 1]]
+        self.shape: board = [[0, 1], [1, 1], [1, 1]]
 
     def rotate(self, allowed: bool):
         # To rotate
         pass
 
+    def move(self, allowed: bool):
+        if allowed:
+            pass
+
 
 class Crux(Piece):
     def __init__(self) -> None:
         super().__init__()
-        self.shape: list[list[int]] = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]
+        self.shape: board = [[0, 1, 0], [1, 1, 1], [0, 1, 0]]
 
     def rotate(self):
         # no rotate
         pass
 
+    def move(self, allowed: bool):
+        if allowed:
+            pass
+
 
 class CruxT(Piece):
     def __init__(self) -> None:
         super().__init__()
-        self.shape: list[list[int]] = [[1, 1, 1], [0, 1, 0]]
+        self.shape: board = [[1, 1, 1], [0, 1, 0]]
 
     def rotate(self):
         # to rotate
         pass
+
+    def move(self, allowed: bool):
+        if allowed:
+            pass
 
 
 class Z(Piece):
     def __init__(self) -> None:
         super().__init__()
-        self.shape: list[list[int]] = [[1, 1, 0], [0, 1, 1]]
+        self.shape: board = [[1, 1, 0], [0, 1, 1]]
 
     def rotate(self):
         # to rotate
         pass
+
+    def move(self, allowed: bool):
+        if allowed:
+            pass
 
 
 cuadrade = Piece({"x": 5, "y": 5}, [[1, 1], [1, 1]])
