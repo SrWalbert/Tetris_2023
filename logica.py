@@ -13,6 +13,11 @@ type board = list[list[int]]
 
 
 def exititing() -> bool:
+    """Salir de la aplicación
+
+    Returns:
+        bool: True, sigue corriendo, False, se termina el loop
+    """
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             return False
@@ -20,6 +25,16 @@ def exititing() -> bool:
 
 
 def draw(list_: board, screen: tuple[int], pixel_size: int) -> pygame.Rect:
+    """Dibuja las figuras en pantalla
+
+    Args:
+        list_ (board): Lista que contiene los datos de poscición de todo
+        screen (tuple[int]): Datos por defecto de la ventana
+        pixel_size (int): Tamaño del botón dado por defecto
+
+    Returns:
+        pygame.Rect: _description_
+    """
     for y, row in enumerate(list_):
         for x, pix in enumerate(row):
             rect = pygame.Rect(x * pixel_size, y * pixel_size, pixel_size, pixel_size)
@@ -158,9 +173,9 @@ class Z(Piece):
             pass
 
 
-cuadrade = Piece({"x": 5, "y": 5}, [[1, 1], [1, 1]])
-linie = Piece({"x": 5, "y": 5}, [[1, 1, 1, 1, 1]])
-linie_l = Piece({"x": 5, "y": 5}, [[1, 1, 1, 1, 1], [0, 0, 0, 0, 1]])
+if __name__ == "__main__":
+    cuadrade = Piece({"x": 5, "y": 5}, [[1, 1], [1, 1]])
+    linie = Piece({"x": 5, "y": 5}, [[1, 1, 1, 1, 1]])
+    linie_l = Piece({"x": 5, "y": 5}, [[1, 1, 1, 1, 1], [0, 0, 0, 0, 1]])
 
-
-actual_piece: Piece = random.choice([cuadrade, linie, linie_l])
+    actual_piece: Piece = random.choice([cuadrade, linie, linie_l])
