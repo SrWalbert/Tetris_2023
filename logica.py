@@ -33,7 +33,7 @@ def draw(list_: board, screen: tuple[int], pixel_size: int) -> pygame.Rect:
         pixel_size (int): Tamaño del botón dado por defecto
 
     Returns:
-        pygame.Rect: _description_
+        pygame.Rect: Dibujo grafico en la pantalla
     """
     for y, row in enumerate(list_):
         for x, pix in enumerate(row):
