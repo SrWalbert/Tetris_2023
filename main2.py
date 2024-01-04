@@ -4,6 +4,8 @@ import pygame
 """Toda la lógica no la dará el modulo propio de logica"""
 import logica as logic
 
+import sys
+
 pygame.init()
 
 SCREEN_WIDTH: int = 600
@@ -34,11 +36,19 @@ board: logic.board = [
 ]
 pixel_size: int = 30
 
-running_program: bool = True
-while running_program:
-    logic.exititing()
-    logic.draw(board, screen, pixel_size=pixel_size)
-    logic.actual_pice.draw(screen, pixel_size=pixel_size)
-    pygame.display.update()
 
-pygame.quit()
+def main(*args: None) -> int:
+    running_program: bool = True
+    while running_program:
+        logic.exititing()
+        logic.draw(board, screen, pixel_size=pixel_size)
+        logic.actual_pice.draw(screen, pixel_size=pixel_size)
+        pygame.display.update()
+    else:
+        pygame.quit()
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
