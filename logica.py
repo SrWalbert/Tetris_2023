@@ -7,11 +7,14 @@ from abc import ABC, abstractclassmethod
 """Random nos ayudará más tarde con la función choise"""
 import random
 
+from numba import jit
+
 """Declarando tipos de datos"""
 type board = list[list[int]]
 """Declarando funciones usadas en el archivo main2.py"""
 
 
+@jit
 def exititing() -> bool:
     """Salir de la aplicación
 
@@ -24,6 +27,7 @@ def exititing() -> bool:
     return False
 
 
+@jit
 def draw(list_: board, screen: tuple[int], pixel_size: int) -> pygame.Rect:
     """Dibuja las figuras en pantalla
 
