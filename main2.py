@@ -1,10 +1,11 @@
+import sys
+
 """Pygame es nuestro módulo principal, que nos dará el juego"""
 import pygame
 
 """Toda la lógica no la dará el modulo propio de logica"""
-import logica as logic
+import logicaPlus as logic
 
-import sys
 
 pygame.init()
 
@@ -42,10 +43,8 @@ def main(*args: None) -> int:
     while running_program:
         logic.exititing()
         logic.draw(board, screen, pixel_size=pixel_size)
-        logic.actual_pice.draw(screen, pixel_size=pixel_size)
+        # logic.actual_pice.draw(screen, pixel_size=pixel_size)
         pygame.display.update()
-    else:
-        pygame.quit()
 
     return 0
 
